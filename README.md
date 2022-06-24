@@ -65,10 +65,41 @@ All the requests should have the domain of `http://localhost:3000/`.
 
 - GET `/accounts`: get all the accounts
 - POST `/accounts`: saves a new account
+  expects:
+
+```js
+{
+  newAccount:{
+    username:"",
+    transactions:[]
+  }
+}
+```
+
 - GET `/transactions`: get all the transactions from all accounts
 - POST `/transaction`: saves a new transaction
+  expects:
+
+```js
+{
+  newTransaction:{
+    accountId:"",
+    // all info from form
+  }
+}
+```
+
 - GET `/categories`: get all the categories
 - POST `/categories`: saves a new category
+  expects:
+
+```js
+{
+  newCategory: {
+    name: '';
+  }
+}
+```
 
 ## Resources
 
