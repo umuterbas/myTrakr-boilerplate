@@ -95,9 +95,7 @@ All the requests should have the domain of `http://localhost:3000/`.
 
 ```js
 {
-  newCategory: {
-    name: '';
-  }
+  newCategory: "",
 }
 ```
 
