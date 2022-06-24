@@ -25,4 +25,13 @@ export const addTransaction = (transaction) => {
   return newTransactions;
 };
 
-export default { addTransaction };
+export const getAllTransactions = () => {
+  const accounts = getAccounts();
+  let allTransactions = [];
+  accounts.forEach((account) => {
+    allTransactions = [...allTransactions, account.transactions];
+  });
+  return allTransactions;
+};
+
+export default { addTransaction, getAllTransactions };

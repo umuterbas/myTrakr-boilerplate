@@ -30,6 +30,12 @@ app.post('/accounts', (req, res) => {
   res.status(201).json(newAccount);
 });
 
+//get all transactions
+app.get('/transactions', (req, res) => {
+  const transactions = getAllTransactions();
+  res.status(200).json(transactions);
+});
+
 // add new transaction
 app.post('/transaction', (req, res) => {
   if (!req.body.newTransaction) {
