@@ -83,7 +83,9 @@ All the requests should have the domain of `http://localhost:3000/`.
 ```js
 {
   newTransaction:{
-    accountId:"",
+    accountId:"", // account ID for Deposits or Withdraws
+    accountIdFrom:"", // sender ID if type = 'Transfer', otherwise null
+    accountIdTo:"" // receiver ID if type = 'Transfer', otherwise null
     // all info from form
   }
 }
