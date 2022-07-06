@@ -21,5 +21,3 @@ class Deposit extends Transaction {
     return this.amount;
   }
 }
-
-// test
