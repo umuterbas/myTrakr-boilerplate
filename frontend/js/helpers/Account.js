@@ -54,9 +54,9 @@ $("#add_new_account").on('click', (event) => {
       
       $.each(data, (i, account) => {
         const newAcc = new Account(account.username);
-        $("#account_select").append(`<option>${newAcc.username}</option>`)
-        $("#from_select").append(`<option>${newAcc.username}</option>`)
-        $("#to_select").append(`<option>${newAcc.username}</option>`)
+        $("#selectuser").append(`<option>${newAcc.username}</option>`)
+        $("#from").append(`<option>${newAcc.username}</option>`)
+        $("#to").append(`<option>${newAcc.username}</option>`)
         $("#account_summary").append(`<li>${newAcc.username}: ${newAcc.balance}$</li>`)
         console.log('testingacc', newAcc)
       });
