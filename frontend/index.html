@@ -21,32 +21,41 @@
   <body>
     myTrakr
     <main>
-      <form action="">
+      <form action="" id="newaccount">
         New Account:
+
         <input type="text" id="new_account_input"/>
         <button id="add_new_account">Add new account</button>
+
       </form>
-      <form action="">
+      <form action="" class="container">
         New Transaction: Deposit
-        <input type="radio" />
+        <input type="radio" name="type" value="deposit" checked/>
         Withdraw
-        <input type="radio" />
+        <input type="radio" name="type" value="withdraw"/>
         Transfer
-        <input type="radio" />
-        <br>
+        <input type="radio" name="type" value="transfer"/>
         Account:
-        <select id="account_select"></select>
-
+        <select id="selectuser" name="username">
+          <option value="username">Select your user name</option>
+        </select>
         From:
-        <select id="from_select"></select>
-
+        <select name="from" id="from">
+          <option value="none">From</option>
+          <option value="Niko">Niko</option>
+        </select>
         To:
-        <select id="to_select"></select>
+        <select name="to" id="to">
+          <option value="none">To</option>
+          <option value="Umut">Umut</option>
+        </select>
         Category:
-        <select id="category_select"></select>
-        <input type="text" />
-        <button type="button">Add new category</button>
-        <br>
+        <select id="categorylist" name="category">
+          <option id="newoperation">new operation</option>
+          <option id="addcategorylist" value="addcategorylist">Add category list</option>
+        </select>
+        <input type="text" id="addcategory"/>
+        <button type="button" id="buttoncategory">Add new category</button>
 
         Description
         <input type="text" />
