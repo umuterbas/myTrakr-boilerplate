@@ -1,15 +1,12 @@
-
-
 $(document).ready(() => {
   // New Transaction
-$.ajax({
-  method: "POST",
-  url: "http://localhost:3000",
-  dataType: "json",
-  }).done((data) => {
-    
-    
-  });
+// $.ajax({
+//   method: "POST",
+//   url: "http://localhost:3000",
+//   dataType: "json",
+//   }).done((data) => {
+      
+//   });
   // Changing between options available
   $('[name=type]').change((event) => {
     let Accountbtn = $('input[name="type"]:checked').val();
@@ -35,7 +32,7 @@ $.ajax({
     let category = $('#addcategory').val();
     console.log(category);
     $.ajax({
-      method: 'post',
+      method: 'POST',
       data: JSON.stringify({
         newCategory: category,
     }),
@@ -52,3 +49,30 @@ $.ajax({
 
 // Add information & Add transaction Amount
 
+$('#buttontransaction').on('click', () => {
+  let transact = $('#description').val();
+  // let amnt = $('#amount').val();
+  console.log(transact);
+  // console.log(amnt);
+  $.ajax({
+    method: "POST",
+    url: 'http://localhost:3000/transaction',
+      dataType: "json",
+    }).done((data)=> {
+    })
+})
+
+
+// $.ajax({
+//   method: "POST",
+//   url: 'http://localhost:3000',
+//   dataType: "json",
+// }).done((data) => {
+//   $('#description').change((e) => {
+//     let desc = $('input [type=text]').val();
+//     e.preventDefault();
+//     console.log(desc);
+//   })
+// })
+
+// add event listener to the button (insert POST)
