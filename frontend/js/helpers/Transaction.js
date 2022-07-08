@@ -1,7 +1,7 @@
 class Transaction {
-  constructor(amount, account) {
+  constructor(amount, accountId) {
     this.amount = amount;
-    this.account = account;
+    this.accountId = accountId;
   }
   commit() {
     if (this.value < 0 && this.amount > this.account.balance) return;
@@ -23,8 +23,8 @@ class Deposit extends Transaction {
 }
 
 class Transfer extends Transaction {
-  constructor(accountIdFrom, accountIdTo) {
-    super();
+  constructor(accountIdFrom, accountIdTo, amount, accountId) {
+    super(amount, accountId);
     this.accountIdForm = accountIdFrom;
     this.accountIdTo = accountIdTo
   }
@@ -41,15 +41,13 @@ $.ajax({
   dataType: 'json',
 }).done((data) => {
   console.log('data get transactions ajax', data);
-  const fakeData = [{id: "123",
-  accountIdFrom: "",
-                     userName: "Umudoo" } ]
+  
   $.each(data, (i, transaction) => {
     const trans = new Transaction(transaction.value);
     $("#transaction_list").append(`
     <tr>
-      <td>${fakeData[0].id}</td>
-      <td>${fakeData[0].userName}</td>
+      <td>${newTransaction.accountId}</td>
+      <td>${account.userName}</td>
       <td>${fakeData.type}</td>
       <td>${fakeData.category}</td>
       <td>${fakeData.description}</td>
