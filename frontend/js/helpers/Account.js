@@ -33,10 +33,10 @@ $("#add_new_account").on('click', (event) => {
   if ($('#new_account_input').val() !== "") {
 
     let accountName = new Account($('#new_account_input').val());
-    $("#selectuser").append(new Option ($('#new_account_input').val()))
-    $("#from").append(new Option ($('#new_account_input').val()))
-    $("#to").append(new Option ($('#new_account_input').val()))
-    $("#account_summary").append(`<li>${'#new_account_input'}: ${newAcc.balance}$</li>`)
+    // $("#selectuser").append(new Option ($('#new_account_input').val()))
+    // $("#from").append(new Option ($('#new_account_input').val()))
+    // $("#to").append(new Option ($('#new_account_input').val()))
+    // $("#account_summary").append(`<li>${'#new_account_input'}: ${newAcc.balance}$</li>`)
     console.log(accountName)
 
     // } else if (checking if the acc already exists) {
