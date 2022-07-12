@@ -30,10 +30,6 @@ class Transfer extends Transaction {
   }
 }
 
-
-
-
-
 // will be in event listener for trans button after nicolo finishes
 $.ajax({
   method: 'get',

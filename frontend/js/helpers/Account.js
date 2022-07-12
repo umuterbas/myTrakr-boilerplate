@@ -22,7 +22,6 @@ $("#add_new_account").on('click', (event) => {
 
   }
 
-
   const newAccount = {
     username: $("#new_account_input").val(),
     transactions: []
@@ -51,6 +50,8 @@ $("#add_new_account").on('click', (event) => {
       dataType: 'json',
     }).done((data) => {
       console.log('data get ajax', data);
+
+      // 
       
       $.each(data, (i, account) => {
         const newAcc = new Account(account.username);
