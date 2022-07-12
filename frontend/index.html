@@ -23,8 +23,10 @@
     <main>
       <form action="" id="newaccount">
         New Account:
-        <input type="text" id="username"/>
-        <button>Add new account</button>
+
+        <input type="text" id="new_account_input"/>
+        <button id="add_new_account">Add new account</button>
+
       </form>
       <form action="" class="container">
         New Transaction: Deposit
@@ -39,13 +41,11 @@
         </select>
         From:
         <select name="from" id="from">
-          <option value="none">From</option>
-          <option value="Niko">Niko</option>
+          <option value="">From</option>
         </select>
         To:
         <select name="to" id="to">
-          <option value="none">To</option>
-          <option value="Umut">Umut</option>
+          <option value="">To</option>
         </select>
         Category:
         <select id="categorylist" name="category">
@@ -60,12 +60,12 @@
 
         Amount:
         <input type="number" id="amount"/>
-
+        
         <button type="button" id="buttontransaction">Add transaction</button>
       </form>
 
       Account summary
-      <ul></ul>
+      <ul id="account_summary"></ul>
       Filter by account:
       <select></select>
       <table>
@@ -79,6 +79,11 @@
           <th>From</th>
           <th>To</th>
         </tr>
+        <tbody id="transaction_list">
+
+
+
+        </tbody>
       </table>
     </main>
     <script src="./js/helpers/Account.js"></script>
