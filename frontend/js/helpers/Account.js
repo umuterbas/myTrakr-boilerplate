@@ -46,7 +46,6 @@ $("#add_new_account").on('click', (event) => {
     return false
   }
 
-
   const newAccount = {
     username: $("#new_account_input").val(),
     transactions: []
@@ -70,7 +69,6 @@ $("#add_new_account").on('click', (event) => {
     //Reset input
     $("#new_account_input").val("");
     alert("New account added");
-
 
 
   })

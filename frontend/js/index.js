@@ -51,17 +51,38 @@ $(document).ready(() => {
 
 $('#buttontransaction').on('click', () => {
   let transact = $('#description').val();
-  // let amnt = $('#amount').val();
+  let amnt = $('#amount').val();
+  let type = $('input[name="type"]:checked').val();
   console.log(transact);
-  // console.log(amnt);
-  $.ajax({
-    method: "POST",
-    url: 'http://localhost:3000/transaction',
-      dataType: "json",
-    }).done((data)=> {
-    })
+  console.log(amnt);
+  console.log(type);
+  let accountid = $('#selectuser').val();
+  let accountidfrom = $('#from').val();
+  let accountidto = $('#to').val();
+  console.log(accountid);
+  console.log(accountidfrom);
+  console.log(accountidto);
+  let category = $('#addcategory').val();
+    console.log(category);
+  const newTransaction = {
+    accountId:"", 
+    accountIdFrom:"", 
+    accountIdTo:"",
+    transact,
+    amnt,
+    type,
+    category
+  }
 })
 
+// when i create a new option i need to set a value of the option as account id 
+
+// $.ajax({
+//   method: "POST",
+//   url: 'http://localhost:3000/transaction',
+//     dataType: "json",
+//   }).done((data)=> {
+//   })
 
 // $.ajax({
 //   method: "POST",
@@ -74,5 +95,3 @@ $('#buttontransaction').on('click', () => {
 //     console.log(desc);
 //   })
 // })
-
-// add event listener to the button (insert POST)
