@@ -56,33 +56,36 @@ $('#buttontransaction').on('click', () => {
   console.log(transact);
   console.log(amnt);
   console.log(type);
-  let accountid = $('#selectuser').val();
-  let accountidfrom = $('#from').val();
-  let accountidto = $('#to').val();
-  console.log(accountid);
-  console.log(accountidfrom);
-  console.log(accountidto);
+  let accountId = $('#selectuser').val();
+  let accountIdFrom = $('#from').val();
+  let accountIdTo = $('#to').val();
+  // console.log(accountId);
+  // console.log(accountidfrom);
+  // console.log(accountidto);
   let category = $('#addcategory').val();
     console.log(category);
   const newTransaction = {
-    accountId:"", 
-    accountIdFrom:"", 
-    accountIdTo:"",
+    accountId, 
+    accountIdFrom, 
+    accountIdTo, 
     transact,
     amnt,
     type,
     category
   }
+  $.ajax({
+    method: "POST",
+    url: 'http://localhost:3000/transaction',
+    data: JSON.stringify({newTransaction}),
+    contentType: "application/json",
+      dataType: "json",
+    }).done((data)=> {
+      console.log(data);
+    })
 })
 
 // when i create a new option i need to set a value of the option as account id 
 
-// $.ajax({
-//   method: "POST",
-//   url: 'http://localhost:3000/transaction',
-//     dataType: "json",
-//   }).done((data)=> {
-//   })
 
 // $.ajax({
 //   method: "POST",
