@@ -11,6 +11,7 @@ class Account {
   }
 }
 
+//
 $.ajax({
   method: 'get',
   url: 'http://localhost:3000/accounts',
@@ -20,9 +21,9 @@ $.ajax({
 
   $.each(data, (i, account) => {
     const newAcc = new Account(account.username);
-    $("#selectuser").append(`<option>${newAcc.username}</option>`)
-    $("#from").append(`<option>${newAcc.username}</option>`)
-    $("#to").append(`<option>${newAcc.username}</option>`)
+    $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#account_summary").append(`<li>${newAcc.username}: ${newAcc.balance}$</li>`)
     console.log('testingacc', newAcc)
   });
