@@ -18,6 +18,9 @@ class Account {
 let accounts = {};
 const updateAccount = function(transaction){
   //add transaction to transactions list
+  $('#transaction').on(function(event) {
+    console.log('transaction_list');
+  })
     // find account by transaction.accountId
     // push transaction to account.transactions
   //update summary
@@ -72,7 +75,7 @@ $("#add_new_account").on('click', (event) => {
     data: JSON.stringify({ newAccount }),
     url: 'http://localhost:3000/accounts',
     dataType: 'json',
-    contentType: "application/json" //recieving back
+    contentType: "application/json" //receiving back
   }).done((account) => {
     console.log('data post ajax', account);
     const newAcc = new Account(account.username);
