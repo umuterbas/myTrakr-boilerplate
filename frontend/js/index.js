@@ -11,12 +11,11 @@ $(document).ready(() => {
   $('[name=type]').change((event) => {
     let Accountbtn = $('input[name="type"]:checked').val();
     event.preventDefault();
-    radiovalue = Accountbtn;
     // console.log(radiovalue);
-    if (radiovalue === 'withdraw' || radiovalue === 'deposit') {
+    if (Accountbtn === 'withdraw' || Accountbtn === 'deposit') {
       $('#transfer').hide();
       $('#account').show();
-    } else if (radiovalue === 'transfer') {
+    } else if (Accountbtn === 'transfer') {
       $('#account').hide();
       $('#transfer').show();
     }
@@ -81,6 +80,9 @@ $('#buttontransaction').on('click', () => {
       dataType: "json",
     }).done((data)=> {
       console.log(data);
+      data.forEach(transaction => {
+        // updateAccount(transaction)
+      });
     })
 })
 
