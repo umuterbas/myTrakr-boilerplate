@@ -39,7 +39,7 @@ $.ajax({
     $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
-    $("#account_summary").append(`<li>${newAcc.username}: ${newAcc.balance}$</li>`)
+    $("#account_summary").append(`<li>${newAcc.username}: <span id=${newAcc.username}>${newAcc.balance}$</span></li>`)
     console.log('testingacc', newAcc)
   });
   console.log('accs',accounts)
@@ -50,10 +50,7 @@ $("#add_new_account").on('click', (event) => {
   if ($('#new_account_input').val() !== "") {
 
     let accountName = new Account($('#new_account_input').val());
-    // $("#selectuser").append(new Option ($('#new_account_input').val()))
-    // $("#from").append(new Option ($('#new_account_input').val()))
-    // $("#to").append(new Option ($('#new_account_input').val()))
-    // $("#account_summary").append(`<li>${'#new_account_input'}: ${newAcc.balance}$</li>`)
+
     console.log(accountName)
 
     // } else if (checking if the acc already exists) {
@@ -76,9 +73,13 @@ $("#add_new_account").on('click', (event) => {
     url: 'http://localhost:3000/accounts',
     dataType: 'json',
     contentType: "application/json" //recieving back
-  }).done((data) => {
-    console.log('data post ajax', data);
-    const newAcc = new Account(data.username);
+  }).done((account) => {
+    console.log('data post ajax', account);
+    const newAcc = new Account(account.username);
+    $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#account_summary").append(`<li>${newAcc.username}: <span id=${newAcc.username}>${newAcc.balance}$</span></li>`)
     // const newAcc = {...data};
 
     console.log('balance', newAcc.balance);
