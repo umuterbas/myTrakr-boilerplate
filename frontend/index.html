@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    myTrakr
+    
     <main>
+      <div>
       <form action="" id="newaccount">
         New Account:
 
@@ -28,6 +29,8 @@
         <button id="add_new_account">Add new account</button>
 
       </form>
+    </div>
+      <br>
       <form action="" class="container">
         New Transaction: Deposit
         <input type="radio" name="type" value="deposit" checked/>
@@ -35,7 +38,7 @@
         <input type="radio" name="type" value="withdraw"/>
         Transfer
         <input type="radio" name="type" value="transfer"/>
-        Account:
+        
         <select id="selectuser" name="username">
           <option value="username">Select your user name</option>
         </select>
@@ -53,23 +56,28 @@
           <option id="newoperation">new operation</option>
           <option id="addcategorylist" value="addcategorylist">Add category list</option>
         </select>
-        <input type="text" id="addcategory"/>
+        <input placeholder="Category Name" type="text" id="addcategory"/>
         <button type="button" id="buttoncategory">Add new category</button>
+        <br>
 
-        Description
-        <input type="text" id="description"/>
+        
+        <input placeholder="Description" type="text" id="description"/>
 
-        Amount:
-        <input type="number" id="amount"/>
+        
+        <input placeholder="Amount" type="number" id="amount"/>
         
         <button type="button" id="buttontransaction">Add transaction</button>
       </form>
-
+      
+      <div>
       Account summary
       <ul id="account_summary"></ul>
       Filter by account:
-      <select></select>
-      <table border="1">
+      <select id="filter_select_id">
+        <option value="show_all">Show All</option>
+      </select>
+      <br>
+      <table border="2">
         <tr>
           <th>Id</th>
           <th>Username</th>
@@ -81,11 +89,13 @@
           <th>To</th>
         </tr>
         <tbody id="transaction_list">
+          <br>
 
 
 
         </tbody>
       </table>
+    </div>
     </main>
     <script type="module" src="./js/helpers/Account.js"></script>
     <script type="module" src="./js/helpers/Category.js"></script>

@@ -42,6 +42,7 @@ $.ajax({
     $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#filter_select_id").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#account_summary").append(`<li>${newAcc.username}: <span id=${newAcc.username}>${newAcc.balance}$</span></li>`)
     console.log('testingacc', newAcc)
   });
