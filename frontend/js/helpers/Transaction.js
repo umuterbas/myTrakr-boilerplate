@@ -1,7 +1,13 @@
 class Transaction {
-  constructor(amount, accountId) {
-    this.amount = amount;
-    this.accountId = accountId;
+  constructor(transaction) {
+    this.id = transaction.id,
+    this.accountId = transaction.accountId;
+    this.accountIdFrom = transaction.accountIdFrom;
+    this.accountIdTo = transaction.accountIdTo;
+    this.amount = transaction.amnt;
+    this.category = transaction.category;
+    this.transact = transaction.transact;
+    this.type = transaction.type;
   }
   commit() {
     if (this.value < 0 && this.amount > this.account.balance) return;
@@ -23,11 +29,30 @@ class Deposit extends Transaction {
 }
 
 class Transfer extends Transaction {
-  constructor(accountIdFrom, accountIdTo, amount, accountId) {
-    super(amount, accountId);
-    this.accountIdForm = accountIdFrom;
-    this.accountIdTo = accountIdTo
+  // constructor(accountIdFrom, accountIdTo, amount, accountId) {
+  //   super(amount, accountId);
+  //   this.accountIdForm = accountIdFrom;
+  //   this.accountIdTo = accountIdTo
+  // }
+  get value() {
+    //
+    //return this.amount;
   }
+}
+
+export const convertTransactions = function(transactions){
+  return transactions.map(transaction => {
+    console.log('transaction convert', transaction)
+    if(transaction.type === 'deposit'){
+      return new Deposit(transaction);
+    }
+    if(transaction.type === 'withdraw'){
+      return new Withdrawal(transaction);
+    }
+    if(transaction.type === 'transfer'){
+      return new Transfer(transaction);
+    }
+  })
 }
 
 //Transaction table
@@ -38,23 +63,26 @@ $.ajax({
   dataType: 'json',
 }).done((data) => {
   console.log('data get transactions ajax', data);
+  data.forEach(accTransactions => {
+    const newTransactions = convertTransactions(accTransactions);
+    $.each(newTransactions, (i, transaction) => {
+      console.log('testingtrns', transaction)
+      console.log('i', i)
   
-  $.each(data, (i, transaction) => {
-    const trans = new Transaction(transaction.value);
-    console.log('testingtrns', trans)
-    $("#transaction_list").append(`
-    <tr>
-      <td>${trans.accountId}</td>
-      <td>${trans.userName}</td>
-      <td>${trans.type}</td>
-      <td>${trans.category}</td>
-      <td>${trans.description}</td>
-      <td>${trans.transactionAmount}</td>
-      <td>${trans.accountIdFrom}</td>
-      <td>${trans.accountIdTo}</td>
-    </tr>
-    `)
-    console.log('testingtrns', trans)
-  })
+      $("#transaction_list").append(`
+      <tr>
+        <td>${transaction.accountId}</td>
+        <td>${transaction.userName}</td>
+        <td>${transaction.type}</td>
+        <td>${transaction.category}</td>
+        <td>${transaction.description}</td>
+        <td>${transaction.amount}</td>
+        <td>${transaction.accountIdFrom}</td>
+        <td>${transaction.accountIdTo}</td>
+      </tr>
+      `)
+      console.log('testingtrns', transaction)
+    })
+  });
   
 })

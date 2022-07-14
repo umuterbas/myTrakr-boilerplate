@@ -1,16 +1,29 @@
+import { convertTransactions } from "./Transaction.js";
+
 class Account {
-  constructor(username) {
+  constructor(username, id, transactions = []) {
     this.username = username;
-    this.transactions = [];
+    this.transactions = transactions;
+    this.id = id;
   }
 
   get balance() {
     return this.transactions.reduce((total, transaction) => {
-      return total + transaction;
+      return total + transaction.value;
     }, 0);
   }
 }
 
+
+let accounts = {};
+const updateAccount = function(transaction){
+  //add transaction to transactions list
+    // find account by transaction.accountId
+    // push transaction to account.transactions
+  //update summary
+    // find span balance by account username
+    // update text using account.balance
+}
 //
 $.ajax({
   method: 'get',
@@ -20,13 +33,16 @@ $.ajax({
   console.log('data get ajax', data);
 
   $.each(data, (i, account) => {
-    const newAcc = new Account(account.username);
+    const newTransactions = convertTransactions(account.transactions)
+    const newAcc = new Account(account.username, account.id, newTransactions);
+    accounts[newAcc.id] = newAcc;
     $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#account_summary").append(`<li>${newAcc.username}: ${newAcc.balance}$</li>`)
     console.log('testingacc', newAcc)
   });
+  console.log('accs',accounts)
 });
 
 $("#add_new_account").on('click', (event) => {
