@@ -1,12 +1,12 @@
 $(document).ready(() => {
   // New Transaction
-// $.ajax({
-//   method: "POST",
-//   url: "http://localhost:3000",
-//   dataType: "json",
-//   }).done((data) => {
-      
-//   });
+  // $.ajax({
+  //   method: "POST",
+  //   url: "http://localhost:3000",
+  //   dataType: "json",
+  //   }).done((data) => {
+
+  //   });
   // Changing between options available
   $('[name=type]').change((event) => {
     let Accountbtn = $('input[name="type"]:checked').val();
@@ -20,29 +20,29 @@ $(document).ready(() => {
       $('#transfer').show();
     }
   });
-  
+
   // Category List
   $.ajax({
     method: "get",
     url: "http://localhost:3000/categories",
     dataType: "json",
   }).done((data) => {
-  $('#buttoncategory').on('click', ()=> {
-    let category = $('#addcategory').val();
-    console.log(category);
-    $.ajax({
-      method: 'POST',
-      data: JSON.stringify({
-        newCategory: category,
-    }),
-    url: 'http://localhost:3000/categories',
-      dataType: 'json',
-      contentType: 'application/json',
-  }).done(data => {
-    console.log('cat',data);
-    $('#categorylist').append(`<option>${data.name}</option>`);
-  })
-  })
+    $('#buttoncategory').on('click', () => {
+      let category = $('#addcategory').val();
+      console.log(category);
+      $.ajax({
+        method: 'POST',
+        data: JSON.stringify({
+          newCategory: category,
+        }),
+        url: 'http://localhost:3000/categories',
+        dataType: 'json',
+        contentType: 'application/json',
+      }).done(data => {
+        console.log('cat', data);
+        $('#categorylist').append(`<option>${data.name}</option>`);
+      })
+    })
   })
 });
 
@@ -62,11 +62,11 @@ $('#buttontransaction').on('click', () => {
   // console.log(accountidfrom);
   // console.log(accountidto);
   let category = $('#addcategory').val();
-    console.log(category);
+  console.log(category);
   const newTransaction = {
-    accountId, 
-    accountIdFrom, 
-    accountIdTo, 
+    accountId,
+    accountIdFrom,
+    accountIdTo,
     transact,
     amnt,
     type,
@@ -75,18 +75,18 @@ $('#buttontransaction').on('click', () => {
   $.ajax({
     method: "POST",
     url: 'http://localhost:3000/transaction',
-    data: JSON.stringify({newTransaction}),
+    data: JSON.stringify({ newTransaction }),
     contentType: "application/json",
-      dataType: "json",
-    }).done((data)=> {
-      console.log(data);
-      data.forEach(transaction => {
-        // updateAccount(transaction)
-      });
-    })
+    dataType: "json",
+  }).done((data) => {
+    console.log(data);
+    data.forEach(transaction => {
+      // updateAccount(transaction)
+    });
+  })
 })
 
-// when i create a new option i need to set a value of the option as account id 
+// when i create a new option i need to set a value of the option as account id
 
 
 // $.ajax({

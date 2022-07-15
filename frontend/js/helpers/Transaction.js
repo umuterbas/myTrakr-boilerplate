@@ -1,7 +1,9 @@
+// import { getUsernameById } from "./Account.js";
+
 class Transaction {
   constructor(transaction) {
     this.id = transaction.id,
-    this.accountId = transaction.accountId;
+      this.accountId = transaction.accountId;
     this.accountIdFrom = transaction.accountIdFrom;
     this.accountIdTo = transaction.accountIdTo;
     this.amount = transaction.amnt;
@@ -40,16 +42,16 @@ class Transfer extends Transaction {
   }
 }
 
-export const convertTransactions = function(transactions){
+export const convertTransactions = function (transactions) {
   return transactions.map(transaction => {
-    console.log('transaction convert', transaction)
-    if(transaction.type === 'deposit'){
+    // console.log('transaction convert', transaction)
+    if (transaction.type === 'deposit') {
       return new Deposit(transaction);
     }
-    if(transaction.type === 'withdraw'){
+    if (transaction.type === 'withdraw') {
       return new Withdrawal(transaction);
     }
-    if(transaction.type === 'transfer'){
+    if (transaction.type === 'transfer') {
       return new Transfer(transaction);
     }
   })
@@ -57,32 +59,33 @@ export const convertTransactions = function(transactions){
 
 //Transaction table
 // will be in event listener for trans button after nicolo finishes
-$.ajax({
-  method: 'get',
-  url: 'http://localhost:3000/transactions',
-  dataType: 'json',
-}).done((data) => {
-  console.log('data get transactions ajax', data);
-  data.forEach(accTransactions => {
-    const newTransactions = convertTransactions(accTransactions);
-    $.each(newTransactions, (i, transaction) => {
-      console.log('testingtrns', transaction)
-      console.log('i', i)
-  
-      $("#transaction_list").append(`
-      <tr>
-        <td>${transaction.accountId}</td>
-        <td>${transaction.userName}</td>
-        <td>${transaction.type}</td>
-        <td>${transaction.category}</td>
-        <td>${transaction.description}</td>
-        <td>${transaction.amount}</td>
-        <td>${transaction.accountIdFrom}</td>
-        <td>${transaction.accountIdTo}</td>
-      </tr>
-      `)
-      console.log('testingtrns', transaction)
-    })
-  });
-  
-})
+// $.ajax({
+//   method: 'get',
+//   url: 'http://localhost:3000/transactions',
+//   dataType: 'json',
+// }).done((data) => {
+//   console.log('data get transactions ajax', data);
+//   data.forEach(accTransactions => {
+//     const newTransactions = convertTransactions(accTransactions);
+//     $.each(newTransactions, (i, transaction) => {
+//       // console.log('testingtrns', transaction)
+//       // console.log('i', i)
+//       const username = getUsernameById(transaction.accountId);
+
+//       $("#transaction_list").append(`
+//       <tr>
+//         <td>${transaction.accountId}</td>
+//         <td>${username}</td>
+//         <td>${transaction.type}</td>
+//         <td>${transaction.category}</td>
+//         <td>${transaction.description}</td>
+//         <td>${transaction.amount}</td>
+//         <td>${transaction.accountIdFrom}</td>
+//         <td>${transaction.accountIdTo}</td>
+//       </tr>
+//       `)
+//       console.log('testingtrns', transaction)
+//     })
+//   });
+
+// })
