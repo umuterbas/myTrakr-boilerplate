@@ -1,86 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myTrakr</title>
-    <!-- jQuery file -->
-    <script src="./js/vendors/jquery.js"></script>
-    <!-- Bootstrap files -->
-    <script src="./js/vendors/bootstrap.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/index.css" />
-  </head>
-  <body>
-    
-    <main>
-      <div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>myTrakr</title>
+  <!-- jQuery file -->
+  <script src="./js/vendors/jquery.js"></script>
+  <!-- Bootstrap files -->
+  <script src="./js/vendors/bootstrap.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+
+  <main>
+    <div>
       <form action="" id="newaccount">
         New Account:
 
-        <input type="text" id="new_account_input"/>
+        <input type="text" id="new_account_input" />
         <button id="add_new_account">Add new account</button>
 
       </form>
     </div>
+    <br>
+    <form action="" class="container">
+      <h3>New Transaction: </h3>
+
+
+      Deposit
+      <input type="radio" name="type" value="deposit" checked />
       <br>
-      <form action="" class="container">
-        <h3>New Transaction: </h3>
-        
-        
-        Deposit
-        <input type="radio" name="type" value="deposit" checked/>
-        <br>
-        Withdraw
-        <input type="radio" name="type" value="withdraw"/>
-        <br>
-        Transfer
-        <input type="radio" name="type" value="transfer"/>
-        
-        <select id="selectuser" name="username">
-          <option value="username">Select your user name</option>
-        </select>
-        From:
-        <select name="from" id="from">
-          <option value="">From</option>
-        </select>
-        To:
-        <select name="to" id="to">
-          <option value="">To</option>
-          
-        </select>
-        Category:
-        <select id="categorylist" name="category">
-          <option id="newoperation">new operation</option>
-          <option id="addcategorylist" value="addcategorylist">Add category list</option>
-        </select>
-        <input placeholder="Category Name" type="text" id="addcategory"/>
-        <button type="button" id="buttoncategory">Add new category</button>
-        <br>
+      Withdraw
+      <input type="radio" name="type" value="withdraw" />
+      <br>
+      Transfer
+      <input type="radio" name="type" value="transfer" />
 
-        
-        <input placeholder="Description" type="text" id="description"/>
+      <select id="selectuser" name="username">
+        <option value="username">Select your user name</option>
+      </select>
+      From:
+      <select name="from" id="from">
+        <option value="">From</option>
+      </select>
+      To:
+      <select name="to" id="to">
+        <option value="">To</option>
 
-        
-        <input placeholder="Amount" type="number" id="amount"/>
-        
-        <button type="button" id="buttontransaction">Add transaction</button>
-      </form>
-      
-      <div>
+      </select>
+      Category:
+      <select id="categorylist" name="category">
+        <option id="newoperation">new operation</option>
+        <option id="addcategorylist" value="addcategorylist">Add category list</option>
+      </select>
+      <input placeholder="Category Name" type="text" id="addcategory" />
+      <button type="button" id="buttoncategory">Add new category</button>
+      <br>
+
+      <input placeholder="Description" type="text" id="description" />
+
+      <input placeholder="Amount" type="number" id="amount" />
+
+      <button type="button" id="buttontransaction">Add transaction</button>
+    </form>
+
+    <div>
       Account summary
       <ul id="account_summary"></ul>
       Filter by account:
       <select id="filter_select_id">
         <option value="show_all">Show All</option>
       </select>
+      <!-- <button type="button" id="filter_button">Apply Filter</button> -->
       <br>
       <table border="2">
         <tr>
@@ -96,16 +93,15 @@
         <tbody id="transaction_list">
           <br>
 
-
-
         </tbody>
       </table>
     </div>
-    </main>
-    <script type="module" src="./js/helpers/Account.js"></script>
-    <script type="module" src="./js/helpers/Category.js"></script>
-    <script type="module" src="./js/helpers/Common.js"></script>
-    <script type="module" src="./js/helpers/Transaction.js"></script>
-    <script type="module" src="./js/index.js"></script>
-  </body>
+  </main>
+  <script type="module" src="./js/helpers/Account.js"></script>
+  <script type="module" src="./js/helpers/Category.js"></script>
+  <script type="module" src="./js/helpers/Common.js"></script>
+  <script type="module" src="./js/helpers/Transaction.js"></script>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
 </html>
