@@ -28,7 +28,7 @@ const updateAccount = function (transaction) {
   // update text using account.balance
 }
 
-//
+//Table
 $.ajax({
   method: 'get',
   url: 'http://localhost:3000/accounts',
@@ -71,7 +71,7 @@ $.ajax({
 });
 
 
-
+//Filter
 $("#filter_select_id").change(function () {
     let filterValue = $("#filter_select_id").val();
 
@@ -128,6 +128,7 @@ export const getUserById = function (id){
   });
 }
 
+//Adding a new account
 $("#add_new_account").on('click', (event) => {
   event.preventDefault()
   if ($('#new_account_input').val() !== "") {
