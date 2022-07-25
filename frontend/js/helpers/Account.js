@@ -16,18 +16,19 @@ class Account {
 
 
 let accounts = {};
-const updateAccount = function(transaction){
+const updateAccount = function (transaction) {
   //add transaction to transactions list
-  $('#transaction').on(function(event) {
+  $('#transaction').on(function (event) {
     console.log('transaction_list');
   })
-    // find account by transaction.accountId
-    // push transaction to account.transactions
+  // find account by transaction.accountId
+  // push transaction to account.transactions
   //update summary
-    // find span balance by account username
-    // update text using account.balance
+  // find span balance by account username
+  // update text using account.balance
 }
-//
+
+//Table
 $.ajax({
   method: 'get',
   url: 'http://localhost:3000/accounts',
@@ -42,12 +43,92 @@ $.ajax({
     $("#selectuser").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#from").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#to").append(`<option value=${account.id}>${newAcc.username}</option>`)
+    $("#filter_select_id").append(`<option value=${account.id}>${newAcc.username}</option>`)
     $("#account_summary").append(`<li>${newAcc.username}: <span id=${newAcc.username}>${newAcc.balance}$</span></li>`)
-    console.log('testingacc', newAcc)
+    // console.log('testingacc', newAcc)
+
+    $.each(newTransactions, (i, transaction) => {
+      // console.log('testingtrns', transaction)
+      // console.log('i', i)
+      // const username = getUsernameById(transaction.accountId);
+
+      $("#transaction_list").append(`
+      <tr>
+        <td>${transaction.accountId}</td>
+        <td>${newAcc.username}</td>
+        <td>${transaction.type}</td>
+        <td>${transaction.category}</td>
+        <td>${transaction.description}</td>
+        <td>${transaction.amount}</td>
+        <td>${transaction.accountIdFrom}</td>
+        <td>${transaction.accountIdTo}</td>
+      </tr>
+      `)
+      console.log('testingtrns', transaction)
+    })
   });
-  console.log('accs',accounts)
+  // console.log('accs', accounts)
 });
 
+
+//Filter
+$("#filter_select_id").change(function () {
+    let filterValue = $("#filter_select_id").val();
+
+    if (filterValue !== "Show All") {
+
+
+        $("#transaction_list").html("")
+        console.log(filterValue);
+        const account = getUserById(filterValue)
+        account.transactions.forEach(transaction => {
+            $("#transaction_list").append(`
+      <tr>
+        <td>${transaction.accountId}</td>
+        <td>${account.username}</td>
+        <td>${transaction.type}</td>
+        <td>${transaction.category}</td>
+        <td>${transaction.description}</td>
+        <td>${transaction.amount}</td>
+        <td>${transaction.accountIdFrom}</td>
+        <td>${transaction.accountIdTo}</td>
+      </tr>
+      `)
+        });
+    } else {
+        $.each(newTransactions, (i, transaction) => {
+        
+            $("#transaction_list").append(`
+            <tr>
+              <td>${transaction.accountId}</td>
+              <td>${newAcc.username}</td>
+              <td>${transaction.type}</td>
+              <td>${transaction.category}</td>
+              <td>${transaction.description}</td>
+              <td>${transaction.amount}</td>
+              <td>${transaction.accountIdFrom}</td>
+              <td>${transaction.accountIdTo}</td>
+            </tr>
+            `)
+        })
+    }
+
+
+});
+
+
+
+export const getUserById = function (id){
+  const accountsArr = Object.values(accounts);
+  return accountsArr.find(account => {
+    console.log('acc',account)
+    if(account.id == id){
+      return account
+    };
+  });
+}
+
+//Adding a new account
 $("#add_new_account").on('click', (event) => {
   event.preventDefault()
   if ($('#new_account_input').val() !== "") {
@@ -99,3 +180,5 @@ $("#add_new_account").on('click', (event) => {
 
 }
 );
+
+
