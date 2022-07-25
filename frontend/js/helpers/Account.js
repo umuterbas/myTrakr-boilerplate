@@ -137,7 +137,7 @@ $("#add_new_account").on('click', (event) => {
 
     console.log(accountName)
 
-    // } else if (checking if the acc already exists) {
+    
 
   } else {
     alert("Enter a valid value")
